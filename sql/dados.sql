@@ -30,7 +30,7 @@ INSERT INTO pagamento (numTransacao, dataPagamento, metodo, valor, estado) VALUE
 ('TRX00012', '2023-03-28', 'PIX', 250, 'Pago'),
 ('TRX00013', '2023-04-04', 'Crédito', 300, 'Pago'),
 ('TRX00014', '2023-04-12', 'Débito', 150, 'Não Pago'),
-('TRX00015', '2023-04-20', 'PIX', 350, 'Pago');
+('TRX00015', '2023-04-20', 'PIX', 350, 'Pago'),
 ('TRX00016', '2024-03-25', 'CRÉDITO', 2000, 'Pago'),
 ('TRX00017', '2024-04-26', 'DÉBITO', 1800, 'Pago'),
 ('TRX00018', '2024-06-01', 'PIX', 2500, 'Não Pago'),
@@ -39,7 +39,9 @@ INSERT INTO pagamento (numTransacao, dataPagamento, metodo, valor, estado) VALUE
 ('TRX00021', '2024-07-30', 'PIX', 2600, 'Pago'),
 ('TRX00022', '2024-03-02', 'CRÉDITO', 2300, 'Não Pago'),
 ('TRX00023', '2025-01-28', 'DÉBITO', 2000, 'Pago'),
-('TRX00024', '2025-04-16', 'PIX', 2700, 'Não Pago');
+('TRX00024', '2025-04-16', 'PIX', 2700, 'Não Pago'),
+('TRX00025', '2023-04-20', 'Débito', 355, 'Pago'),
+('TRX00026', '2023-04-20', 'Crédito', 435, 'Pago');
 
 INSERT INTO Pacote (nome, horaCheckIn, horaCheckOut, endereco) VALUES
 ('Marte Escape', '12:00:00', '12:00:00', 'Valles Marineris, Marte'),
@@ -61,6 +63,8 @@ INSERT INTO Pacote (nome, horaCheckIn, horaCheckOut, endereco) VALUES
 
 INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duracao) VALUES
 ('2024-03-15', 'Marte Escape', 'XP12345678', 'TRX00001', '2024-03-22', '8 days'),
+('2024-03-25', 'Vênus Vista', 'XP12345678', 'TRX000016', '2024-04-22', '28 days'),
+('2024-05-01', 'Lunar Landing', 'XP12345678', 'TRX000017', '2024-05-10', '9 days'),
 ('2024-04-05', 'Vênus Vista', 'BR98765432', 'TRX00002', '2024-04-12', '9 days'),
 ('2024-05-01', 'Lunar Landing', 'US13579246', 'TRX00003', '2024-05-08', '10 days'),
 ('2024-06-10', 'Io Adventure', 'CA24681012', 'TRX00004', '2024-06-17', '11 days'),
@@ -74,7 +78,7 @@ INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duraca
 ('2025-02-15', 'Neptune Nirvana', 'ES80246802', 'TRX00012', '2025-02-22', '19 days'),
 ('2025-03-10', 'Enceladus Expedition', 'NG91357913', 'TRX00013', '2025-03-17', '20 days'),
 ('2025-04-05', 'Olympus Outing', 'ZA02468024', 'TRX00014', '2025-04-12', '21 days'),
-('2025-05-01', 'Phobos Fantasy', 'AU13579135', 'TRX00015', '2025-05-08', '22 days');
+('2025-05-01', 'Phobos Fantasy', 'AU13579135', 'TRX00015', '2025-05-08', '22 days'),
 ('2024-04-05', 'Vênus Vista', 'XP12345678', 'TRX00016', '2024-04-12', '9 days'),
 ('2024-05-01', 'Lunar Landing', 'XP12345678', 'TRX00017', '2024-05-08', '10 days'),
 ('2024-06-10', 'Io Adventure', 'XP12345678', 'TRX00018', '2024-06-17', '11 days'),
