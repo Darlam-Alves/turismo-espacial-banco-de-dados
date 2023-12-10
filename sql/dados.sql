@@ -43,22 +43,23 @@ INSERT INTO pagamento (numTransacao, dataPagamento, metodo, valor, estado) VALUE
 ('TRX00025', '2023-04-20', 'Débito', 355, 'Pago'),
 ('TRX00026', '2023-04-20', 'Crédito', 435, 'Pago');
 
-INSERT INTO Pacote (nome, horaCheckIn, horaCheckOut, endereco) VALUES
-('Marte Escape', '12:00:00', '12:00:00', 'Valles Marineris, Marte'),
-('Vênus Vista', '08:30:00', '15:45:00', 'Maxwell Montes, Vênus'),
-('Lunar Landing', '18:20:00', '09:10:00', 'Mare Tranquillitatis, Lua'),
-('Io Adventure', '14:30:00', '11:05:00', 'Loki Patera, Io'),
-('Titan Trek', '17:35:00', '08:45:00', 'Kraken Mare, Titã'),
-('Europa Excursion', '14:00:00', '19:25:00', 'Conamara Chaos, Europa'),
-('Ganymede Getaway', '10:55:00', '15:15:00', 'Galileo Regio, Ganímedes'),
-('Callisto Cabin', '17:50:00', '14:05:00', 'Valhalla Crater, Calisto'),
-('Mercury Mission', '09:20:00', '16:30:00', 'Caloris Basin, Mercúrio'),
-('Pluto Pilgrimage', '13:40:00', '18:55:00', 'Tombaugh Regio, Plutão'),
-('Sunrise on Saturn', '09:50:00', '14:10:00', 'Hexágono do Pólo sul, Saturno'),
-('Neptune Nirvana', '14:25:00', '09:40:00', 'Great Dark Spot, Netuno'),
-('Enceladus Expedition', '16:40:00', '12:55:00', 'Tiger Stripes, Encélado'),
-('Olympus Outing', '11:25:00', '15:50:00', 'Olympus Mons, Marte'),
-('Phobos Fantasy', '10:15:00', '14:45:00', 'Stickney Crater, Fobos');
+INSERT INTO Pacote (nome, nomeHospedagem, horaCheckIn, horaCheckOut, endereco) VALUES
+('Marte Escape', 'HospedagemMarte1', '12:00:00', '12:00:00', 'Valles Marineris, Marte'),
+('Vênus Vista', 'HospedagemVenus1', '08:30:00', '15:45:00', 'Maxwell Montes, Vênus'),
+('Lunar Landing', 'HospedagemLua1', '18:20:00', '09:10:00', 'Mare Tranquillitatis, Lua'),
+('Io Adventure', 'HospedagemIo1', '14:30:00', '11:05:00', 'Loki Patera, Io'),
+('Titan Trek', 'HospedagemTitan1', '17:35:00', '08:45:00', 'Kraken Mare, Titã'),
+('Europa Excursion', 'HospedagemEuropa1', '14:00:00', '19:25:00', 'Conamara Chaos, Europa'),
+('Ganymede Getaway', 'HospedagemGanymede1', '10:55:00', '15:15:00', 'Galileo Regio, Ganímedes'),
+('Callisto Cabin', 'HospedagemCallisto1', '17:50:00', '14:05:00', 'Valhalla Crater, Calisto'),
+('Mercury Mission', 'HospedagemMercury1', '09:20:00', '16:30:00', 'Caloris Basin, Mercúrio'),
+('Pluto Pilgrimage', 'HospedagemPluto1', '13:40:00', '18:55:00', 'Tombaugh Regio, Plutão'),
+('Sunrise on Saturn', 'HospedagemSaturn1', '09:50:00', '14:10:00', 'Hexágono do Pólo sul, Saturno'),
+('Neptune Nirvana', 'HospedagemNeptune1', '14:25:00', '09:40:00', 'Great Dark Spot, Netuno'),
+('Enceladus Expedition', 'HospedagemEnceladus1', '16:40:00', '12:55:00', 'Tiger Stripes, Encélado'),
+('Olympus Outing', 'HospedagemMarte2', '11:25:00', '15:50:00', 'Olympus Mons, Marte'),
+('Phobos Fantasy', 'HospedagemPhobos1', '10:15:00', '14:45:00', 'Stickney Crater, Fobos');
+
 
 
 INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duracao) VALUES
