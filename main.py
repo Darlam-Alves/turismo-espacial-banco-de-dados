@@ -25,22 +25,39 @@ def inserir_corpo_celeste():
     functions.inserir_corpo_celeste(nome, tipo, gravidade, numColonia)
     conn.commit()
 
-print("Seja bem-vindo ao nosso sistema\nDigite o código do comando:\n")
-print("1- Inserir colônia")
-print("2 - Inserir corpo celeste")
-print("3 - Consultar pacotes")
-print("4 - Consultar experiencias disponiveis")
+def inserir_turista():  
+    passaporte = input('Informe seu passaporte: ')
+    nome = input('Informe o Nome: ')
+    celular = input('Informe o celular: ')
+    telefone = input('Informe o telefone: ')
+    cep = input('Informe o cep: ')
+    numEndereco = int (input('Informe o numEndereco: '))
+    pais = input('Informe o pais: ')
+    dataNascimento = input('Informe o dataNascimento: ')
+
+    functions.inserir_turista(passaporte, nome, celular, telefone, cep, numEndereco, pais, dataNascimento)
+    conn.commit()
+
+print("Digite o código do comando:\n")
+print("1 - Inserir turista")
+print("2 - Inserir colônia")
+print("3 - Inserir corpo celeste")
+print("4 - Consultar pacotes")
+print("5 - Consultar experiencias disponiveis ")
 print("0 - Sair")
+
 operacao = int(input())
 
 while operacao != 0:
     if operacao == 1:
-        inserir_Colonia()
+        inserir_turista()
     elif operacao == 2:
-        inserir_corpo_celeste()
+        inserir_Colonia()
     elif operacao == 3:
-        functions.consultar_pacotes()
+        inserir_corpo_celeste()
     elif operacao == 4:
+        functions.consultar_pacotes()
+    elif operacao == 5:
         functions.consultar_experiencias_colonia()
     else:
         print("Comando inválido. Tente novamente.")

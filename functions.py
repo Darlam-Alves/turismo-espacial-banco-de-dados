@@ -41,6 +41,24 @@ def inserir_corpo_celeste(nome, tipo, gravidade, numColonia):
         cursor.close()
         conn.close()
 
+def inserir_turista(passaporte, nome, celular, telefone, cep, numEndereco, pais, dataNascimento):
+    try:
+        conn, cursor = conectar_banco()
+
+        query = "INSERT INTO turistaespacial(passaporte, nome, celular, telFixo, cep, numEndereço, pais, dataNascimento) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        values = (passaporte, nome, celular, telefone, cep, numEndereco, pais, dataNascimento)
+        cursor.execute(query, values)
+        conn.commit()
+        print("Turista espacial inserido com sucesso no banco de dados.")
+
+    except Exception as e:
+        print("Erro ao inserir turista espacial:", e)
+
+    finally:
+        cursor.close()
+        conn.close()
+
+
 def consultar_pacotes():
     try:
         conn, cursor = conectar_banco()
