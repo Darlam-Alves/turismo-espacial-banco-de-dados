@@ -1,9 +1,14 @@
 --Mostra todas as experiências de cada colonia e lista os turistas que a visitaram, mostrando qual pacote o turista usou para fazer a visita
-SELECT e.nome AS experiencia, e.colonia AS colonia, t.nome AS turista, p.nome AS pacote FROM
-turistaespacial t JOIN viagem v ON t.passaporte = v.turista
-JOIN pacote p ON v.pacote = p.nome
-JOIN pacoteexperiencias pe ON p.nome = pe.pacote
-RIGHT JOIN experiencia e ON pe.experiencia = e.nome
+SELECT 
+	e.nome AS experiencia, 
+	e.colonia AS colonia, 
+	t.nome AS turista, 
+	p.nome AS pacote 
+FROM
+	turistaespacial t JOIN viagem v ON t.passaporte = v.turista
+	JOIN pacote p ON v.pacote = p.nome
+	JOIN pacoteexperiencias pe ON p.nome = pe.pacote
+	RIGHT JOIN experiencia e ON pe.experiencia = e.nome
 ORDER BY e.colonia, e.nome;
 
 
