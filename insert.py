@@ -22,7 +22,7 @@ def insert_data():
         # commit the changes to the database
         conn.commit()
 
-        print(colored("tabelas criadas com sucesso.", 'green'))
+        print(colored("DADOS INSERIDOS COM SUCESSO", 'green'))
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
