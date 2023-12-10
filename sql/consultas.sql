@@ -77,7 +77,7 @@ WHERE co.nome IN ('ColôniaTerra', 'ColôniaVenus', 'ColôniaLua'))
 
 EXCEPT
 -- Parte 2: Turistas que visitaram qualquer uma das colônias, mas não todas
-(SELECT te.passaporte
+(SELECT te.nome, te.passaporte
 FROM turistaEspacial te
 WHERE te.passaporte IN (
   SELECT v.turista
