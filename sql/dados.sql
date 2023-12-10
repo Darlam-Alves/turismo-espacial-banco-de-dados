@@ -174,17 +174,20 @@ INSERT INTO linguasGuia (guia, lingua) VALUES
 ('GU68024680', 'Chinês');
 
 INSERT INTO corpoCeleste (nome, tipo, gravidade, numColonias) VALUES
-('Júpiter', 'SATÉLITE', 24.79, 3654),
+('Júpiter', 'PLANETA', 24.79, 3654),
 ('Terra', 'PLANETA', 9.8, 195),
 ('Lua', 'SATÉLITE', 1.625, 18),
 ('Marte', 'PLANETA', 3.72076, 95),
 ('Fobos', 'SATÉLITE', 0.0057, 72),
 ('Ganimedes', 'SATÉLITE', 1.428, 36),
+('Mercúrio', 'PLANETA', 5.6, 22),
 ('Europa', 'SATÉLITE', 1.314, 10),
 ('Titã', 'SATÉLITE', 1.352, 15),
 ('Vênus', 'PLANETA', 8.87, 20),
 ('Encélado', 'SATÉLITE', 0.113, 6),
-('Ganímedes', 'SATÉLITE', 1.428, 10);
+('Io', 'SATÉLITE', 0.8, 6),
+('Saturno', 'PLANETA', 10.44, 32);
+
 
 INSERT INTO colonia (nome, habitantes, localização, corpoCeleste) VALUES
 ('ColoniaTerra', 1000000, 'América do Norte', 'Terra'),
@@ -196,23 +199,30 @@ INSERT INTO colonia (nome, habitantes, localização, corpoCeleste) VALUES
 ('ColoniaTitan', 852, 'Planalto de Xanadu', 'Titã'),
 ('ColoniaVenus', 633, 'Planalto Aphrodite', 'Vênus'),
 ('ColoniaEncelado', 90, 'Subsuperfície de Encélado', 'Encélado'),
-('ColoniaGanymede', 8000, 'Base Galileu', 'Ganímedes');
+('ColoniaMercurio', 8000, 'Cratera Funda', 'Mercúrio'),
+('ColoniaIo', 300, 'Cratera de Galileu', 'Io');
 
 INSERT INTO voo (numero, pacote, colonia, origem, destino, horario, duracao, qtdPassageiro, cabineNum, cabineTipo) VALUES
-(1, 'Marte Escape', 'ColoniaTerra', 'Terra', 'Marte', '12:00:00', '7 days', 100, 101, 'LUXO'),
-(2, 'Vênus Vista', 'ColoniaVenus', 'Vênus', 'Marte', '08:30:00', '7 days', 150, 102, 'STANDARD'),
-(3, 'Lunar Landing', 'ColoniaLua', 'Lua', 'Terra', '18:20:00', '7 days', 80, 103, 'DELUXE'),
-(4, 'Io Adventure', 'ColoniaMarte', 'Marte', 'Io', '14:30:00', '7 days', 120, 104, 'LUXO'),
-(5, 'Titan Trek', 'ColoniaTitan', 'Titã', 'Terra', '17:35:00', '7 days', 200, 105, 'STANDARD'),
-(6, 'Europa Excursion', 'ColoniaEuropa', 'Europa', 'Terra', '14:00:00', '7 days', 90, 106, 'DELUXE'),
-(7, 'Ganymede Getaway', 'ColoniaGanymede', 'Ganimedes', 'Terra', '10:55:00', '7 days', 130, 107, 'LUXO'),
-(8, 'Mercury Mission', 'ColoniaMarte', 'Mercúrio', 'Terra', '09:20:00', '7 days', 70, 109, 'DELUXE'),
-(9, 'Pluto Pilgrimage', 'ColoniaMarte', 'Plutão', 'Terra', '13:40:00', '7 days', 160, 110, 'LUXO'),
-(10, 'Sunrise on Saturn', 'ColoniaTerra', 'Saturno', 'Terra', '09:50:00', '7 days', 110, 111, 'STANDARD'),
-(11, 'Neptune Nirvana', 'ColoniaTerra', 'Netuno', 'Terra', '14:25:00', '7 days', 140, 112, 'DELUXE'),
-(12, 'Enceladus Expedition', 'ColoniaEncelado', 'Encélado', 'Terra', '16:40:00', '7 days', 190, 113, 'LUXO'),
-(13, 'Olympus Outing', 'ColoniaMarte', 'Marte', 'Terra', '11:25:00', '7 days', 100, 114, 'STANDARD'),
-(14, 'Phobos Fantasy', 'ColoniaMarte', 'Fobos', 'Terra', '10:15:00', '7 days', 150, 115, 'DELUXE');
+(1, 'Marte Escape', 'ColoniaMarte', 'Terra', 'Marte', '12:00:00', '7 days', 100, 101, 'LUXO'),
+ (2, 'Marte Escape', 'ColoniaMarte', 'Marte', 'Terra', '12:00:00', '7 days', 100, 101, 'LUXO'),
+(3, 'Vênus Vista', 'ColoniaVenus', 'Terra', 'Vênus', '08:30:00', '7 days', 150, 102, 'STANDARD'),
+ (4, 'Vênus Vista', 'ColoniaVenus', 'Vênus', 'Terra', '08:30:00', '7 days', 150, 102, 'STANDARD'),
+(5, 'Lunar Landing', 'ColoniaLua', 'Terra', 'Lua', '18:20:00', '7 days', 80, 103, 'DELUXE'),
+ (6, 'Lunar Landing', 'ColoniaLua', 'Lua', 'Terra', '18:20:00', '7 days', 80, 103, 'DELUXE'),
+(7, 'Io Adventure', 'ColoniaIo', 'Terra', 'Io', '14:30:00', '7 days', 120, 104, 'LUXO'),
+ (8, 'Io Adventure', 'ColoniaIo', 'Io', 'Terra', '14:30:00', '7 days', 120, 104, 'LUXO'),
+(9, 'Titan Trek', 'ColoniaTitan', 'Terra', 'Titã', '17:35:00', '7 days', 200, 105, 'STANDARD'),
+ (10, 'Titan Trek', 'ColoniaTitan', 'Titã', 'Terra', '17:35:00', '7 days', 200, 105, 'STANDARD'),
+(11, 'Europa Excursion', 'ColoniaEuropa', 'Terra', 'Europa', '14:00:00', '7 days', 90, 106, 'DELUXE'),
+ (12, 'Europa Excursion', 'ColoniaEuropa', 'Europa', 'Terra', '14:00:00', '7 days', 90, 106, 'DELUXE'),
+(13, 'Ganymede Getaway', 'ColoniaGanimedes', 'Terra', 'Ganimedes', '10:55:00', '7 days', 130, 107, 'LUXO'),
+ (14, 'Ganymede Getaway', 'ColoniaGanimedes', 'Ganimedes', 'Terra', '10:55:00', '7 days', 130, 107, 'LUXO'),
+(15, 'Mercury Mission', 'ColoniaMercurio', 'Terra', 'Mercúrio', '09:20:00', '7 days', 70, 109, 'DELUXE'),
+ (16, 'Mercury Mission', 'ColoniaMercurio', 'Mercúrio', 'Terra', '09:20:00', '7 days', 70, 109, 'DELUXE'),
+(17, 'Enceladus Expedition', 'ColoniaEncelado', 'Terra', 'Encéladu', '16:40:00', '7 days', 190, 113, 'LUXO'),
+ (18, 'Enceladus Expedition', 'ColoniaEncelado', 'Encélado', 'Terra', '16:40:00', '7 days', 190, 113, 'LUXO'),
+(19, 'Phobos Fantasy', 'ColoniaFobos', 'Terra', 'Fobus', '10:15:00', '7 days', 150, 115, 'DELUXE'),
+ (20, 'Phobos Fantasy', 'ColoniaFobos', 'Fobos', 'Terra', '10:15:00', '7 days', 150, 115, 'DELUXE');
 
 -- Inserções na tabela experiencia
 INSERT INTO experiencia (nome, tipo, horario, localizacao, restricao, colonia, interativo) VALUES
@@ -221,7 +231,7 @@ INSERT INTO experiencia (nome, tipo, horario, localizacao, restricao, colonia, i
 ('Passeio nas Dunas de Titã', 'TURÍSTICA', '15:30:00', 'Planalto de Xanadu', 'Nenhuma', 'ColoniaTitan', TRUE),
 ('Estudo da Geologia Lunar', 'CIENTÍFICA', '13:45:00', 'Cratera Lunar', 'Traje Espacial', 'ColoniaLua', FALSE),
 ('Expedição Subsuperfície', 'TURÍSTICA', '12:00:00', 'Subsuperfície de Europa', 'Nenhuma', 'ColoniaEuropa', TRUE),
-('Biologia Aquática', 'CIENTÍFICA', '09:30:00', 'Base Galileu', 'Traje Espacial', 'ColoniaGanymede', FALSE);
+('Biologia Aquática', 'CIENTÍFICA', '09:30:00', 'Base Galileu', 'Traje Espacial', 'ColoniaGanimedes', FALSE);
 
 INSERT INTO equipamentos (experiencia, equipamento) VALUES
 ('Observação de Estrelas', 'Telescópio'),
@@ -255,11 +265,15 @@ INSERT INTO planeta (nome, numSatelites) VALUES
 ('Júpiter', 79),
 ('Terra', 1),
 ('Marte', 2),
-('Vênus', 1);
+('Vênus', 1),
+('Mercúrio', 0),
+('Saturno', 145);
 
 INSERT INTO satelite (nome, planeta, distancia) VALUES
 ('Lua', 'Terra', 384400),
 ('Fobos', 'Marte', 9377),
-('Ganimedes', 'Júpiter', 1070400),
 ('Europa', 'Júpiter', 671034),
-('Ganímedes', 'Júpiter', 1070400);
+('Ganimedes', 'Júpiter', 1070400),
+('Io', 'Júpiter', 628300000),
+('Titã', 'Saturno', 1200000),
+('Encélado', 'Saturno', 1272000);
