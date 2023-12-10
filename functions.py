@@ -88,13 +88,20 @@ def consultar_experiencias_colonia():
     try:
         conn, cursor = conectar_banco()
 
-        cursor.execute("SELECT c.nome AS colonia, e.nome AS experiencia,  e.tipo AS tipo FROM experiencia e JOIN colonia c ON (e.colonia = c.nome) ORDER BY c.nome;")
+        cursor.execute("SELECT c.nome AS colonia, e.nome AS experiencia, e.tipo AS tipo FROM experiencia e JOIN colonia c ON (e.colonia = c.nome) ORDER BY c.nome;")
         results = cursor.fetchall()
+
+        # Imprimindo rótulos de coluna
+        print(f"{'Colonia':<20}{'Experiencia':<40}{'Tipo'}")
+        print("-" * 80)
+
+        # Imprimindo resultados
         for row in results:
-            print(row)
+            colonia, experiencia, tipo = row  # Desempacotamento da tupla
+            print(f"{colonia:<20}{experiencia:<40}{tipo}")
 
     except Exception as e:
-        print("Erro ao consultar os experiencias disponíveis:", e)
+        print("Erro ao consultar as experiências disponíveis:", e)
         print("Tipo de exceção:", type(e).__name__)
 
     finally:

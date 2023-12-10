@@ -38,17 +38,23 @@ def inserir_turista():
     functions.inserir_turista(passaporte, nome, celular, telefone, cep, numEndereco, pais, dataNascimento)
     conn.commit()
 
-print("Digite o código do comando:\n")
-print("1 - Inserir turista")
-print("2 - Inserir colônia")
-print("3 - Inserir corpo celeste")
-print("4 - Consultar dividas dos turistas espaciais")
-print("5 - Consultar experiencias disponiveis ")
-print("0 - Sair")
 
-operacao = int(input())
+operacao = -1
 
 while operacao != 0:
+    print("\nOpções:")
+    print("1 - Inserir turista")
+    print("2 - Inserir colônia")
+    print("3 - Inserir corpo celeste")
+    print("4 - Consultar dívidas dos turistas espaciais")
+    print("5 - Consultar experiências disponíveis")
+    print("0 - Sair")
+
+    # Adicionando linha horizontal
+    print("-" * 40)
+
+    operacao = int(input("Digite o código do comando (ou 0 para sair): "))
+
     if operacao == 1:
         inserir_turista()
     elif operacao == 2:
@@ -59,11 +65,10 @@ while operacao != 0:
         functions.consultar_dividas()
     elif operacao == 5:
         functions.consultar_experiencias_colonia()
+    elif operacao == 0:
+        print("Saindo do programa...")
     else:
         print("Comando inválido. Tente novamente.")
-
-    print("Digite o código do comando (ou 0 para sair):")
-    operacao = int(input())
 
 cursor.close()
 conn.close()
