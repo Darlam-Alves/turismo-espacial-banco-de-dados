@@ -42,7 +42,7 @@ print("Digite o código do comando:\n")
 print("1 - Inserir turista")
 print("2 - Inserir colônia")
 print("3 - Inserir corpo celeste")
-print("4 - Consultar pacotes")
+print("4 - Consultar dividas dos turistas espaciais")
 print("5 - Consultar experiencias disponiveis ")
 print("0 - Sair")
 
@@ -56,7 +56,7 @@ while operacao != 0:
     elif operacao == 3:
         inserir_corpo_celeste()
     elif operacao == 4:
-        functions.consultar_pacotes()
+        functions.consultar_dividas()
     elif operacao == 5:
         functions.consultar_experiencias_colonia()
     else:

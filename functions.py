@@ -59,14 +59,21 @@ def inserir_turista(passaporte, nome, celular, telefone, cep, numEndereco, pais,
         conn.close()
 
 
-def consultar_pacotes():
+def consultar_dividas():
     try:
         conn, cursor = conectar_banco()
 
-        cursor.execute("SELECT * FROM Pacote")
+        cursor.execute("SELECT t.nome AS turista, pag.valor AS valor_a_pagar, v.pacote AS pacote_referente FROM viagem v JOIN turistaEspacial t ON (v.turista = t.passaporte) JOIN pagamento pag ON (pag.numTransacao = v.pagamento) WHERE estado = 'Não Pago' ORDER BY t.nome;")
         results = cursor.fetchall()
+
+        # Imprimindo rótulos de coluna
+        print("Turista\t\tValor a Pagar\tPacote Referente")
+        print("--------------------------------------------")
+
+        # Imprimindo resultados
         for row in results:
-            print(row)
+            # Ajuste: usando índices numéricos
+            print(f"{row[0]}\t{row[1]}\t\t{row[2]}")
 
     except Exception as e:
         print("Erro ao consultar os pacotes disponíveis:", e)
@@ -76,11 +83,12 @@ def consultar_pacotes():
         cursor.close()
         conn.close()
 
+
 def consultar_experiencias_colonia():
     try:
         conn, cursor = conectar_banco()
 
-        cursor.execute("SELECT c.nome, e.nome, e.tipo FROM experiencia e JOIN colonia c ON (e.colonia = c.nome)")
+        cursor.execute("SELECT c.nome AS colonia, e.nome AS experiencia,  e.tipo AS tipo FROM experiencia e JOIN colonia c ON (e.colonia = c.nome) ORDER BY c.nome;")
         results = cursor.fetchall()
         for row in results:
             print(row)
