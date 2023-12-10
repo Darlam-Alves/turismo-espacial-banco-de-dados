@@ -2,12 +2,12 @@
 
 import psycopg2
 from termcolor import colored
-from config import config
+from config import get_db_config  
 
 def insert_data():
     conn = None
     try:
-        params = config()
+        params = get_db_config()
 
         # connect to the PostgreSQL server
         conn = psycopg2.connect(**params)

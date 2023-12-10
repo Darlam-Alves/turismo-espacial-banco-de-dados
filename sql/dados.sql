@@ -64,8 +64,8 @@ INSERT INTO Pacote (nome, nomeHospedagem, horaCheckIn, horaCheckOut, endereco) V
 
 INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duracao) VALUES
 ('2024-03-15', 'Marte Escape', 'XP12345678', 'TRX00001', '2024-03-22', '8 days'),
-('2024-03-25', 'Vênus Vista', 'XP12345678', 'TRX000016', '2024-04-22', '28 days'),
-('2024-05-01', 'Lunar Landing', 'XP12345678', 'TRX000017', '2024-05-10', '9 days'),
+('2024-03-25', 'Vênus Vista', 'XP12345678', 'TRX00022', '2024-04-22', '28 days'),
+('2024-05-01', 'Lunar Landing', 'XP12345678', 'TRX00025', '2024-05-10', '9 days'),
 ('2024-04-05', 'Vênus Vista', 'BR98765432', 'TRX00002', '2024-04-12', '9 days'),
 ('2024-05-01', 'Lunar Landing', 'US13579246', 'TRX00003', '2024-05-08', '10 days'),
 ('2024-06-10', 'Io Adventure', 'CA24681012', 'TRX00004', '2024-06-17', '11 days'),
@@ -81,14 +81,14 @@ INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duraca
 ('2025-04-05', 'Olympus Outing', 'ZA02468024', 'TRX00014', '2025-04-12', '21 days'),
 ('2025-05-01', 'Phobos Fantasy', 'AU13579135', 'TRX00015', '2025-05-08', '22 days'),
 ('2024-04-05', 'Vênus Vista', 'XP12345678', 'TRX00016', '2024-04-12', '9 days'),
-('2024-05-01', 'Lunar Landing', 'XP12345678', 'TRX00017', '2024-05-08', '10 days'),
 ('2024-06-10', 'Io Adventure', 'XP12345678', 'TRX00018', '2024-06-17', '11 days'),
 ('2024-03-15', 'Marte Escape', 'BR98765432', 'TRX00019', '2024-03-22', '8 days'),
 ('2024-06-10', 'Io Adventure', 'BR98765432', 'TRX00020', '2024-06-17', '11 days'),
 ('2024-08-15', 'Europa Excursion', 'BR98765432', 'TRX00021', '2024-08-22', '13 days'),
-('2024-03-15', 'Marte Escape', 'US13579246', 'TRX00022', '2024-03-22', '8 days'),
+('2024-03-15', 'Marte Escape', 'US13579246', 'TRX00017', '2024-03-22', '8 days'),
 ('2025-02-15', 'Neptune Nirvana', 'US13579246', 'TRX00023', '2025-02-22', '19 days'),
 ('2025-05-01', 'Phobos Fantasy', 'US13579246', 'TRX00024', '2025-05-08', '22 days');
+
 
 INSERT INTO avaliacao (dataPartida, pacote, turista, nota, comentario, dataHora) VALUES
 ('2024-03-15', 'Marte Escape', 'XP12345678', 9.5, 'Ótima viagem!', '2024-03-23 10:30:00'),
