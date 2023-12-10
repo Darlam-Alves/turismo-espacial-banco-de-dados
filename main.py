@@ -7,7 +7,7 @@ db_config = get_db_config()
 conn = psycopg2.connect(**db_config)
 cursor = conn.cursor()
 
-def inserir_Colonia_no_banco():  
+def inserir_Colonia():  
     Nome = input('Informe o nome da Colonia: ')
     Habitantes = int(input('Informe o numero de habitantes da colonia: '))
     Localizacao = input('Informe o Localizacao da Colonia: ')
@@ -16,16 +16,28 @@ def inserir_Colonia_no_banco():
     functions.inserir_Colonia(Nome, Habitantes, Localizacao, Corpoceleste)
     conn.commit()
 
+def inserir_corpo_celeste():  
+    nome = input('Informe o nome do corpo celeste: ')
+    tipo = input('Informe o tipo (PLANETA ou SATELITE): ')
+    gravidade = float (input('Informe a gravidade do corpo celeste: '))
+    numColonia = int (input('Informe o numero de colonias: '))
+
+    functions.inserir_corpo_celeste(nome, tipo, gravidade, numColonia)
+    conn.commit()
+
 print("Seja bem-vindo ao nosso sistema\nDigite o código do comando:\n")
-print("1- Inserir colônia no banco")
-print("2 - Consultar pacotes")
+print("1- Inserir colônia")
+print("2 - Inserir corpo celeste")
+print("3 - Consultar pacotes")
 print("0 - Sair")
 operacao = int(input())
 
 while operacao != 0:
     if operacao == 1:
-        inserir_Colonia_no_banco()
+        inserir_Colonia()
     elif operacao == 2:
+        inserir_corpo_celeste()
+    elif operacao == 3:
         functions.consultar_pacotes()
     else:
         print("Comando inválido. Tente novamente.")

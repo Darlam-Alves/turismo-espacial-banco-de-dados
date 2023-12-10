@@ -24,6 +24,23 @@ def inserir_Colonia(Nome, Habitantes, Localizacao, Corpoceleste):
         cursor.close()
         conn.close()
 
+def inserir_corpo_celeste(nome, tipo, gravidade, numColonia):
+    try:
+        conn, cursor = conectar_banco()
+
+        query = "INSERT INTO corpoCeleste(nome, tipo, gravidade, numColonias) VALUES (%s, %s, %s, %s)"
+        values = (nome, tipo, gravidade, numColonia)
+        cursor.execute(query, values)
+        conn.commit()
+        print("Colônia inserida com sucesso no banco de dados.")
+
+    except Exception as e:
+        print("Erro ao inserir corpo celeste:", e)
+
+    finally:
+        cursor.close()
+        conn.close()
+
 def consultar_pacotes():
     try:
         conn, cursor = conectar_banco()
@@ -41,5 +58,3 @@ def consultar_pacotes():
         cursor.close()
         conn.close()
 
-# Se você deseja testar a função consultar_pacotes, adicione a chamada abaixo:
-# consultar_pacotes()
