@@ -1,4 +1,4 @@
---Consulta 3
+--Consulta 1
 SELECT t.nome AS nome_turista, COUNT(v.dataPartida) AS total_viagens
 FROM turistaEspacial t
 JOIN viagem v ON t.passaporte = v.turista
@@ -6,7 +6,7 @@ GROUP BY t.nome
 HAVING COUNT(v.dataPartida) > 3
 ORDER BY nome_turista;
 
---Consulta 1
+--Consulta 2
 SELECT DISTINCT 
     te.nome
 FROM turistaEspacial te
@@ -20,7 +20,7 @@ WHERE co.nome IN ('ColôniaTerra', 'ColôniaVenus', 'ColôniaLua')
 GROUP BY te.passaporte, te.nome
     HAVING COUNT(DISTINCT co.nome) = 3;
 
-
+--Consulta 3
 --Mostra todas as experiências de cada colonia e lista os turistas que a visitaram, mostrando qual pacote o turista usou para fazer a visita
 SELECT 
 	e.nome AS experiencia, 
@@ -34,7 +34,7 @@ FROM
 	RIGHT JOIN experiencia e ON pe.experiencia = e.nome
 ORDER BY e.colonia, e.nome;
 
-
+--Consulta 4
 --Mostra um resumo de todas as viagens dos turistas
 SELECT 
 	t.nome AS turista, 
@@ -50,9 +50,9 @@ FROM
 GROUP BY t.nome, v.pacote, v.datapartida, a.nota, p.valor, a.comentario
 ORDER BY t.nome, v.pacote, v.datapartida;
 
-
+-- COnsulta 5
 -- Mostra os turistas que visitaram todas as colônias 'ColôniaTerra', 'ColôniaVenus'e 'ColôniaLua'
--- Consulta 1: Todos os turistas que visitaram pelo menos uma das colônias
+-- Parte1: Todos os turistas que visitaram pelo menos uma das colônias
 (SELECT 
   te.nome AS turista,
   te.passaporte AS passaporte
@@ -62,7 +62,7 @@ JOIN voo vo ON v.pacote = vo.pacote
 JOIN colonia co ON vo.colonia = co.nome
 WHERE co.nome IN ('ColôniaTerra', 'ColôniaVenus', 'ColôniaLua'))
 EXCEPT
--- Consulta 2: Turistas que visitaram qualquer uma das colônias, mas não todas
+-- Parte 2: Turistas que visitaram qualquer uma das colônias, mas não todas
 (SELECT te.passaporte
 FROM turistaEspacial te
 WHERE te.passaporte IN (
@@ -75,7 +75,7 @@ WHERE te.passaporte IN (
   HAVING COUNT(DISTINCT co.nome) < 3
 ));
 
-
+-- Consulta 6
 --Mostra as opcoes de idioma usado pelo guia de cada pacote, bem como o guia espacial responsavel
 SELECT 
     p.nome AS pacote,
