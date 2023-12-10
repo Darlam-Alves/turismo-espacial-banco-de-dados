@@ -116,6 +116,17 @@ CREATE TABLE corpoCeleste(
 		CONSTRAINT ck_corpoCeleste_numcolonias CHECK (numColonias > 5)
 );
 
+CREATE TABLE colonia(
+	nome VARCHAR(30) NOT NULL,
+	habitantes INTEGER,
+	localização VARCHAR(30),
+	corpoCeleste VARCHAR(30) NOT NULL,
+
+	CONSTRAINT pk_colonia PRIMARY KEY (nome),
+	CONSTRAINT fk_colonia FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome)
+);
+
+
 
 
 CREATE TABLE voo(
