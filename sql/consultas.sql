@@ -19,7 +19,7 @@ JOIN voo vo
     ON v.pacote = vo.pacote
 JOIN colonia co 
     ON vo.colonia = co.nome
-WHERE co.nome IN ('ColôniaTerra', 'ColôniaVenus', 'ColôniaLua')
+WHERE co.nome IN ('ColoniaTerra', 'ColoniaVenus', 'ColoniaLua')
 GROUP BY te.passaporte, te.nome
     HAVING COUNT(DISTINCT co.nome) = 3;
 
@@ -73,7 +73,7 @@ JOIN voo vo
     ON v.pacote = vo.pacote
 JOIN colonia co
      ON vo.colonia = co.nome
-WHERE co.nome IN ('ColôniaTerra', 'ColôniaVenus', 'ColôniaLua'))
+WHERE co.nome IN ('ColoniaTerra', 'ColoniaVenus', 'ColoniaLua'))
 
 EXCEPT
 -- Parte 2: Turistas que visitaram qualquer uma das colônias, mas não todas
@@ -86,7 +86,7 @@ WHERE te.passaporte IN (
     ON v.pacote = vo.pacote
   JOIN colonia co 
     ON vo.colonia = co.nome
-  WHERE co.nome IN ('ColôniaTerra', 'ColôniaVenus', 'ColôniaLua')
+  WHERE co.nome IN ('ColoniaTerra', 'ColoniaVenus', 'ColoniaLua')
   GROUP BY v.turista
     HAVING COUNT(DISTINCT co.nome) < 3
 ));
