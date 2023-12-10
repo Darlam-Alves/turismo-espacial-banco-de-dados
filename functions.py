@@ -23,3 +23,23 @@ def inserir_Colonia(Nome, Habitantes, Localizacao, Corpoceleste):
     finally:
         cursor.close()
         conn.close()
+
+def consultar_pacotes():
+    try:
+        conn, cursor = conectar_banco()
+
+        cursor.execute("SELECT * FROM Pacote")
+        results = cursor.fetchall()
+        for row in results:
+            print(row)
+
+    except Exception as e:
+        print("Erro ao consultar os pacotes disponíveis:", e)
+        print("Tipo de exceção:", type(e).__name__)
+
+    finally:
+        cursor.close()
+        conn.close()
+
+# Se você deseja testar a função consultar_pacotes, adicione a chamada abaixo:
+# consultar_pacotes()
