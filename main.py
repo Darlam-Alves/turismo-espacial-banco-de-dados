@@ -29,6 +29,7 @@ print("Seja bem-vindo ao nosso sistema\nDigite o código do comando:\n")
 print("1- Inserir colônia")
 print("2 - Inserir corpo celeste")
 print("3 - Consultar pacotes")
+print("4 - Consultar experiencias disponiveis")
 print("0 - Sair")
 operacao = int(input())
 
@@ -39,6 +40,8 @@ while operacao != 0:
         inserir_corpo_celeste()
     elif operacao == 3:
         functions.consultar_pacotes()
+    elif operacao == 4:
+        functions.consultar_experiencias_colonia()
     else:
         print("Comando inválido. Tente novamente.")
 

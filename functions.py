@@ -58,3 +58,19 @@ def consultar_pacotes():
         cursor.close()
         conn.close()
 
+def consultar_experiencias_colonia():
+    try:
+        conn, cursor = conectar_banco()
+
+        cursor.execute("SELECT c.nome, e.nome, e.tipo FROM experiencia e JOIN colonia c ON (e.colonia = c.nome)")
+        results = cursor.fetchall()
+        for row in results:
+            print(row)
+
+    except Exception as e:
+        print("Erro ao consultar os experiencias disponíveis:", e)
+        print("Tipo de exceção:", type(e).__name__)
+
+    finally:
+        cursor.close()
+        conn.close()
