@@ -1,71 +1,63 @@
---Consulta 1
-SELECT 
-    t.nome AS nome_turista, 
-    COUNT(v.dataPartida) AS total_viagens
-FROM turistaEspacial t
-JOIN viagem v 
-    ON t.passaporte = v.turista
-GROUP BY t.nome
-    HAVING COUNT(v.dataPartida) > 3
-ORDER BY nome_turista;
+--C1: Consulta de Pacotes com Valor Abaixo da Média
+SELECT
+  nome,
+  valor
+FROM(
+    SELECT
+	pac.nome,
+	pag.valor,
+	AVG(pag.valor) OVER () AS media_valor
+  FROM
+	viagem v
+	JOIN pagamento pag
+   	 ON v.pagamento = pag.numTransacao
+	JOIN pacote pac
+   	 ON v.pacote = pac.nome
+) subconsulta
+WHERE valor < media_valor;
 
---Consulta 2
-SELECT DISTINCT 
-    te.nome
-FROM turistaEspacial te
-JOIN viagem v 
-    ON te.passaporte = v.turista
-JOIN voo vo 
-    ON v.pacote = vo.pacote
-JOIN colonia co 
-    ON vo.colonia = co.nome
-WHERE co.nome IN ('ColoniaTerra', 'ColoniaVenus', 'ColoniaLua')
-GROUP BY te.passaporte, te.nome
-    HAVING COUNT(DISTINCT co.nome) = 3;
 
---Consulta 3
---Mostra todas as experiências de cada colonia e lista os turistas que a visitaram, mostrando qual pacote o turista usou para fazer a visita
+
+--C2: Consulta lista de turistas que visitaram cada experiência
 SELECT 
 	e.nome AS experiencia, 
 	e.colonia AS colonia, 
 	t.nome AS turista, 
-	p.nome AS pacote 
-FROM
-	turistaespacial t JOIN viagem v 
-        ON t.passaporte = v.turista
-	JOIN pacote p 
-        ON v.pacote = p.nome
-	JOIN pacoteexperiencias pe 
-        ON p.nome = pe.pacote
-	RIGHT JOIN experiencia e 
-        ON pe.experiencia = e.nome
+	p.nome AS pacote
+FROM turistaespacial t 
+JOIN viagem v 
+	ON t.passaporte = v.turista
+JOIN pacote p 
+	ON v.pacote = p.nome
+JOIN pacoteexperiencias pe 
+	ON p.nome = pe.pacote
+RIGHT JOIN experiencia e
+	ON pe.experiencia = e.nome
 ORDER BY e.colonia, e.nome;
 
---Consulta 4
---Mostra um resumo de todas as viagens dos turistas
-SELECT 
-	t.nome AS turista, 
+
+
+--C3: Consulta por Detalhes das Viagem e Avaliação do Turista
+SELECT t.nome AS turista,
 	v.datapartida AS data_viagem, 
 	v.pacote AS pacote, 
 	p.valor AS preco, 
 	a.nota AS avaliacao,
 	a.comentario AS comentario 
-FROM 
-	turistaespacial t JOIN viagem v 
-        ON t.passaporte = v.turista
-	JOIN pagamento p 
-        ON v.pagamento = p.numtransacao
-	LEFT JOIN avaliacao a 
-        ON (v.datapartida, v.pacote, v.turista) = (a.datapartida, a.pacote, a.turista)
-GROUP BY t.nome, v.pacote, v.datapartida, a.nota, p.valor, a.comentario
-ORDER BY t.nome, v.pacote, v.datapartida;
+FROM turistaespacial t 
+JOIN viagem v 
+	ON t.passaporte = v.turista
+JOIN pagamento p 
+	ON v.pagamento = p.numtransacao
+LEFT JOIN avaliacao a 
+	ON (v.datapartida, v.pacote, v.turista) = (a.datapartida, a.pacote, a.turista);
 
--- COnsulta 5
--- Mostra os turistas que visitaram todas as colônias 'ColôniaTerra', 'ColôniaVenus'e 'ColôniaLua'
--- Parte1: Todos os turistas que visitaram pelo menos uma das colônias
-(SELECT 
-  te.nome AS turista,
-  te.passaporte AS passaporte
+
+
+--C4: Turistas espaciais que viajaram para as colônias ColoniaMarte, ColoniaVenus ou ColoniaLua
+SELECT 
+	te.nome AS turista,
+	te.passaporte AS passaporte
 FROM turistaEspacial te
 JOIN viagem v 
     ON te.passaporte = v.turista
@@ -73,38 +65,21 @@ JOIN voo vo
     ON v.pacote = vo.pacote
 JOIN colonia co
      ON vo.colonia = co.nome
-WHERE co.nome IN ('ColoniaTerra', 'ColoniaVenus', 'ColoniaLua'))
+WHERE co.nome IN ('ColoniaMarte', 'ColoniaVenus', 'ColoniaLua')
+GROUP BY te.passaporte
 
-EXCEPT
--- Parte 2: Turistas que visitaram qualquer uma das colônias, mas não todas
-(SELECT te.nome, te.passaporte
-FROM turistaEspacial te
-WHERE te.passaporte IN (
-  SELECT v.turista
-  FROM viagem v
-  JOIN voo vo 
-    ON v.pacote = vo.pacote
-  JOIN colonia co 
-    ON vo.colonia = co.nome
-  WHERE co.nome IN ('ColoniaTerra', 'ColoniaVenus', 'ColoniaLua')
-  GROUP BY v.turista
-    HAVING COUNT(DISTINCT co.nome) < 3
-));
 
--- Consulta 6
---Mostra as opcoes de idioma usado pelo guia de cada pacote, bem como o guia espacial responsavel
-SELECT 
-    p.nome AS pacote,
-    lg.lingua AS idioma,
-	  ge.nome AS guia
-FROM
-    pacote p 
-    LEFT JOIN guiapacote gp 
-        ON p.nome = gp.pacote
-    JOIN guiaespacial ge 
-        ON gp.guia = ge.passaporte
-    JOIN linguasguia lg
-        ON ge.passaporte = lg.guia
-GROUP BY p.nome, lg.lingua, ge.nome
-ORDER BY p.nome, ge.nome, lg.lingua;
 
+--C5: Consulta de experiências que utilizam TODOS os equipamentos
+SELECT e.nome AS experiencia
+FROM experiencia e 
+WHERE NOT EXISTS (
+    SELECT DISTINCT eq.equipamento
+    FROM equipamentos eq
+	
+    EXCEPT
+	
+    SELECT equipamento
+    FROM equipamentos eq2
+    WHERE eq2.experiencia = e.nome
+);
