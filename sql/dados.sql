@@ -263,9 +263,8 @@ INSERT INTO pacoteExperiencias (pacote, experiencia) VALUES
 ('Europa Excursion', 'Observação de Estrelas'),
 ('Mercury Mission', 'Biologia Aquática'),
 ('Sunrise on Saturn', 'Biologia Aquática'),
-('Neptune Nirvana', 'Expedição Subsuperfície'),
-('Enceladus Expedition', 'Estudo da Geologia Lunar'),
-('Phobos Fantasy', 'Observação de Estrelas');
+('Enceladus Expedition', 'Estudo da Geologia Lunar');
+
 
 --Tabela Planeta
 INSERT INTO planeta (nome, numSatelites) VALUES
