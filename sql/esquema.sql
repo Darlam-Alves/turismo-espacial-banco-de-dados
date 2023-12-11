@@ -28,6 +28,7 @@ CREATE TABLE pagamento (
 
 CREATE TABLE Pacote(
     nome VARCHAR(30) NOT NULL,
+    nomeHospedagem VARCHAR(30),
     horaCheckIn TIME, 
     horaCheckOut TIME, 
     endereco VARCHAR(30) NOT NULL,
@@ -44,9 +45,9 @@ CREATE TABLE viagem (
     duracao INTERVAL, 
 		
   CONSTRAINT pk_viagem PRIMARY KEY (dataPartida, pacote, turista),
-  CONSTRAINT fk_viagem_pagamento FOREIGN KEY (pagamento) REFERENCES pagamento(numTransacao),
-	CONSTRAINT fk_viagem_pacote FOREIGN KEY (pacote) REFERENCES pacote(nome),
-	CONSTRAINT fk_viagem_turista FOREIGN KEY (turista) REFERENCES turistaEspacial(passaporte),
+  CONSTRAINT fk_viagem_pagamento FOREIGN KEY (pagamento) REFERENCES pagamento(numTransacao) ON DELETE CASCADE,
+	CONSTRAINT fk_viagem_pacote FOREIGN KEY (pacote) REFERENCES pacote(nome) ON DELETE CASCADE,
+	CONSTRAINT fk_viagem_turista FOREIGN KEY (turista) REFERENCES turistaEspacial(passaporte) ON DELETE CASCADE,
   CONSTRAINT uk_viagem UNIQUE (pagamento)
 );
 
@@ -59,7 +60,7 @@ CREATE TABLE avaliacao (
     dataHora DATE,
     
     CONSTRAINT pk_avaliacao PRIMARY KEY (dataPartida, Pacote, Turista),
-    CONSTRAINT fk_avaliacao FOREIGN KEY (dataPartida, Pacote, Turista) REFERENCES Viagem (dataPartida, Pacote, Turista),
+    CONSTRAINT fk_avaliacao FOREIGN KEY (dataPartida, Pacote, Turista) REFERENCES Viagem (dataPartida, Pacote, Turista)	ON DELETE CASCADE,
 		CONSTRAINT ck_avialacao CHECK ( nota >= 0 AND nota <= 10)
 );
 
@@ -84,7 +85,7 @@ CREATE TABLE especialidades(
     especialidade VARCHAR(30) NOT NULL,
     
     CONSTRAINT pk_especialidade PRIMARY KEY (guiaEspacial, especialidade),
-    CONSTRAINT fk_especialidade_guia FOREIGN KEY (guiaEspacial) REFERENCES  guiaEspacial(Passaporte)
+    CONSTRAINT fk_especialidade_guia FOREIGN KEY (guiaEspacial) REFERENCES guiaEspacial(Passaporte) ON DELETE CASCADE
 );
 
 CREATE TABLE guiaPacote(
@@ -92,8 +93,8 @@ CREATE TABLE guiaPacote(
     pacote VARCHAR (30) NOT NULL,
     
     CONSTRAINT pk_guiaPacote PRIMARY KEY (guia, pacote),
-    CONSTRAINT fk_guiaPacote_guia FOREIGN KEY (guia) REFERENCES guiaEspacial(passaporte),
-    CONSTRAINT fk_guiaPacote_pacote FOREIGN KEY (pacote) REFERENCES Pacote(nome) 
+    CONSTRAINT fk_guiaPacote_guia FOREIGN KEY (guia) REFERENCES guiaEspacial(passaporte) ON DELETE CASCADE,
+    CONSTRAINT fk_guiaPacote_pacote FOREIGN KEY (pacote) REFERENCES Pacote(nome) ON DELETE CASCADE
 );
 
 CREATE TABLE linguasGuia(
@@ -101,7 +102,7 @@ CREATE TABLE linguasGuia(
     lingua VARCHAR (30)NOT NULL,
     
     CONSTRAINT pk_linguasGuia PRIMARY KEY (guia, lingua),
-    CONSTRAINT fk_linguasGuia FOREIGN KEY (guia) REFERENCES guiaEspacial(passaporte)
+    CONSTRAINT fk_linguasGuia FOREIGN KEY (guia) REFERENCES guiaEspacial(passaporte) ON DELETE CASCADE
 );
 
 CREATE TABLE corpoCeleste(
@@ -122,7 +123,7 @@ CREATE TABLE colonia(
 	corpoCeleste VARCHAR(30) NOT NULL,
 	
 	CONSTRAINT pk_colonia PRIMARY KEY (nome),
-	CONSTRAINT fk_colonia FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome)
+	CONSTRAINT fk_colonia FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome) ON DELETE RESTRICT 
 );
 
 CREATE TABLE voo(
@@ -140,7 +141,7 @@ CREATE TABLE voo(
   CONSTRAINT pk_voo PRIMARY KEY (numero),
   CONSTRAINT fk_voo_pacote FOREIGN KEY (pacote) REFERENCES pacote(nome),
 	CONSTRAINT ck_voo_cabineTipo CHECK (UPPER(cabineTipo) IN ('STANDARD', 'DELUXE', 'LUXO')),
-  CONSTRAINT fk_voo_colonia FOREIGN KEY (colonia) REFERENCES colonia(nome)
+  CONSTRAINT fk_voo_colonia FOREIGN KEY (colonia) REFERENCES colonia(nome) ON DELETE SET NULL
 );
 
 CREATE TABLE experiencia(
@@ -153,7 +154,7 @@ CREATE TABLE experiencia(
     interativo BOOLEAN,
     
     CONSTRAINT pk_experiencia PRIMARY KEY (nome),
-    CONSTRAINT fk_experiencia_colonia FOREIGN KEY (colonia) REFERENCES colonia(nome),
+    CONSTRAINT fk_experiencia_colonia FOREIGN KEY (colonia) REFERENCES colonia(nome) ON DELETE SET NULL,
     CONSTRAINT ck_tipo CHECK (UPPER(tipo) IN ('CIENTÍFICA', 'TURÍSTICA'))
 );
 
@@ -162,7 +163,7 @@ CREATE TABLE equipamentos (
 	equipamento VARCHAR(30) NOT NULL,
 	
 	CONSTRAINT pk_equipamentos PRIMARY KEY (experiencia, equipamento),
-	CONSTRAINT fk_equipamentos FOREIGN KEY (experiencia) REFERENCES experiencia(nome)
+	CONSTRAINT fk_equipamentos FOREIGN KEY (experiencia) REFERENCES experiencia(nome) ON DELETE CASCADE
 );
 
 CREATE TABLE pacoteExperiencias(
@@ -170,8 +171,8 @@ CREATE TABLE pacoteExperiencias(
 	experiencia VARCHAR(30) NOT NULL,
 	
 	CONSTRAINT pk_pacote_experiencias PRIMARY KEY (pacote, experiencia),
-	CONSTRAINT fk_pacoteExperiencias_pacote FOREIGN KEY (pacote) REFERENCES pacote(nome),
-	CONSTRAINT fk_pacoteExperiencias_experiencias FOREIGN KEY (experiencia) REFERENCES experiencia(nome)
+	CONSTRAINT fk_pacoteExperiencias_pacote FOREIGN KEY (pacote) REFERENCES pacote(nome) ON DELETE CASCADE,
+	CONSTRAINT fk_pacoteExperiencias_experiencias FOREIGN KEY (experiencia) REFERENCES experiencia(nome) ON DELETE CASCADE
 );
 
 CREATE TABLE planeta(
@@ -179,7 +180,7 @@ CREATE TABLE planeta(
 	numSatelites INTEGER NOT NULL,
 	
 	CONSTRAINT pk_planeta PRIMARY KEY (nome),
-	CONSTRAINT fk_planeta FOREIGN KEY (nome) REFERENCES corpoCeleste(nome)
+	CONSTRAINT fk_planeta FOREIGN KEY (nome) REFERENCES corpoCeleste(nome) ON DELETE CASCADE
 );
 
 CREATE TABLE satelite(
@@ -188,8 +189,8 @@ CREATE TABLE satelite(
 	distancia DOUBLE PRECISION,
 	
 	CONSTRAINT pk_satelite PRIMARY KEY (nome),
-	CONSTRAINT fk_satelite_nome FOREIGN KEY (nome) REFERENCES corpoCeleste(nome),
-	CONSTRAINT fk_satelite_planeta FOREIGN KEY (planeta) REFERENCES planeta(nome)
+	CONSTRAINT fk_satelite_nome FOREIGN KEY (nome) REFERENCES corpoCeleste(nome) ON DELETE CASCADE,
+	CONSTRAINT fk_satelite_planeta FOREIGN KEY (planeta) REFERENCES planeta(nome) ON DELETE CASCADE
 );
 
 CREATE TABLE especieNativa(
@@ -197,7 +198,7 @@ CREATE TABLE especieNativa(
 	especie VARCHAR (30) NOT NULL,
 	
 	CONSTRAINT pk_especie_nativa PRIMARY KEY (corpoCeleste, especie),
-	CONSTRAINT fk_especie_nativa FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome)
+	CONSTRAINT fk_especie_nativa FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome) ON DELETE CASCADE
 );
 
 CREATE TABLE atmosfera(
@@ -205,5 +206,5 @@ CREATE TABLE atmosfera(
 	composicao VARCHAR(30) NOT NULL,
 	
 	CONSTRAINT pk_atmosfera PRIMARY KEY (corpoCeleste, composicao),
-	CONSTRAINT fk_atmosfera FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome)
+	CONSTRAINT fk_atmosfera FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome) ON DELETE CASCADE
 );

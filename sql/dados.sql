@@ -1,3 +1,4 @@
+--Tabela turistaespacial
 INSERT INTO turistaEspacial (passaporte, nome, celular, telFixo, cep, numEndereço, pais, dataNascimento) VALUES
 ('XP12345678', 'Luna Moraes', '11987654321', '21234567', '12345-678', 101, 'Brasil', '1985-07-16'),
 ('BR98765432', 'Marco Silva', '21987654321', '11234567', '23456-789', 202, 'Brasil', '1990-03-25'),
@@ -15,6 +16,7 @@ INSERT INTO turistaEspacial (passaporte, nome, celular, telFixo, cep, numEndere�
 ('ZA02468024', 'Ethan Smith', '27987654321', NULL, '45678-901', 214, 'África do Sul', '1991-10-18'),
 ('AU13579135', 'Olivia Brown', '91987654321', '33456789', '56789-012', 315, 'Austrália', '1989-03-03');
 
+--Tabela pagamento
 INSERT INTO pagamento (numTransacao, dataPagamento, metodo, valor, estado) VALUES
 ('TRX00001', '2023-01-05', 'Crédito', 500, 'Pago'),
 ('TRX00002', '2023-01-12', 'Débito', 200, 'Não Pago'),
@@ -30,28 +32,42 @@ INSERT INTO pagamento (numTransacao, dataPagamento, metodo, valor, estado) VALUE
 ('TRX00012', '2023-03-28', 'PIX', 250, 'Pago'),
 ('TRX00013', '2023-04-04', 'Crédito', 300, 'Pago'),
 ('TRX00014', '2023-04-12', 'Débito', 150, 'Não Pago'),
-('TRX00015', '2023-04-20', 'PIX', 350, 'Pago');
+('TRX00015', '2023-04-20', 'PIX', 350, 'Pago'),
+('TRX00016', '2024-03-25', 'CRÉDITO', 2000, 'Pago'),
+('TRX00017', '2024-04-26', 'DÉBITO', 1800, 'Pago'),
+('TRX00018', '2024-06-01', 'PIX', 2500, 'Não Pago'),
+('TRX00019', '2024-03-01', 'CRÉDITO', 2200, 'Pago'),
+('TRX00020', '2024-05-30', 'DÉBITO', 1900, 'Não Pago'),
+('TRX00021', '2024-07-30', 'PIX', 2600, 'Pago'),
+('TRX00022', '2024-03-02', 'CRÉDITO', 2300, 'Não Pago'),
+('TRX00023', '2025-01-28', 'DÉBITO', 2000, 'Pago'),
+('TRX00024', '2025-04-16', 'PIX', 2700, 'Não Pago'),
+('TRX00025', '2023-04-20', 'Débito', 355, 'Pago'),
+('TRX00026', '2023-04-20', 'Crédito', 435, 'Pago');
 
-INSERT INTO Pacote (nome, horaCheckIn, horaCheckOut, endereco) VALUES
-('Marte Escape', '12:00:00', '12:00:00', 'Valles Marineris, Marte'),
-('Vênus Vista', '08:30:00', '15:45:00', 'Maxwell Montes, Vênus'),
-('Lunar Landing', '18:20:00', '09:10:00', 'Mare Tranquillitatis, Lua'),
-('Io Adventure', '14:30:00', '11:05:00', 'Loki Patera, Io'),
-('Titan Trek', '17:35:00', '08:45:00', 'Kraken Mare, Titã'),
-('Europa Excursion', '14:00:00', '19:25:00', 'Conamara Chaos, Europa'),
-('Ganymede Getaway', '10:55:00', '15:15:00', 'Galileo Regio, Ganímedes'),
-('Callisto Cabin', '17:50:00', '14:05:00', 'Valhalla Crater, Calisto'),
-('Mercury Mission', '09:20:00', '16:30:00', 'Caloris Basin, Mercúrio'),
-('Pluto Pilgrimage', '13:40:00', '18:55:00', 'Tombaugh Regio, Plutão'),
-('Sunrise on Saturn', '09:50:00', '14:10:00', 'Hexágono do Pólo sul, Saturno'),
-('Neptune Nirvana', '14:25:00', '09:40:00', 'Great Dark Spot, Netuno'),
-('Enceladus Expedition', '16:40:00', '12:55:00', 'Tiger Stripes, Encélado'),
-('Olympus Outing', '11:25:00', '15:50:00', 'Olympus Mons, Marte'),
-('Phobos Fantasy', '10:15:00', '14:45:00', 'Stickney Crater, Fobos');
+--Tabela pacote
+INSERT INTO Pacote (nome, nomeHospedagem, horaCheckIn, horaCheckOut, endereco) VALUES
+('Marte Escape', 'HospedagemMarte1', '12:00:00', '12:00:00', 'Valles Marineris, Marte'),
+('Vênus Vista', 'HospedagemVenus1', '08:30:00', '15:45:00', 'Maxwell Montes, Vênus'),
+('Lunar Landing', 'HospedagemLua1', '18:20:00', '09:10:00', 'Mare Tranquillitatis, Lua'),
+('Io Adventure', 'HospedagemIo1', '14:30:00', '11:05:00', 'Loki Patera, Io'),
+('Titan Trek', 'HospedagemTitan1', '17:35:00', '08:45:00', 'Kraken Mare, Titã'),
+('Europa Excursion', 'HospedagemEuropa1', '14:00:00', '19:25:00', 'Conamara Chaos, Europa'),
+('Ganymede Getaway', 'HospedagemGanymede1', '10:55:00', '15:15:00', 'Galileo Regio, Ganímedes'),
+('Callisto Cabin', 'HospedagemCallisto1', '17:50:00', '14:05:00', 'Valhalla Crater, Calisto'),
+('Mercury Mission', 'HospedagemMercury1', '09:20:00', '16:30:00', 'Caloris Basin, Mercúrio'),
+('Pluto Pilgrimage', 'HospedagemPluto1', '13:40:00', '18:55:00', 'Tombaugh Regio, Plutão'),
+('Sunrise on Saturn', 'HospedagemSaturn1', '09:50:00', '14:10:00', 'Hexágono do Pólo sul, Saturno'),
+('Neptune Nirvana', 'HospedagemNeptune1', '14:25:00', '09:40:00', 'Great Dark Spot, Netuno'),
+('Enceladus Expedition', 'HospedagemEnceladus1', '16:40:00', '12:55:00', 'Tiger Stripes, Encélado'),
+('Olympus Outing', 'HospedagemMarte2', '11:25:00', '15:50:00', 'Olympus Mons, Marte'),
+('Phobos Fantasy', 'HospedagemPhobos1', '10:15:00', '14:45:00', 'Stickney Crater, Fobos');
 
-
+--Tabela viagem
 INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duracao) VALUES
 ('2024-03-15', 'Marte Escape', 'XP12345678', 'TRX00001', '2024-03-22', '8 days'),
+('2024-03-25', 'Vênus Vista', 'XP12345678', 'TRX00022', '2024-04-22', '28 days'),
+('2024-05-01', 'Lunar Landing', 'XP12345678', 'TRX00025', '2024-05-10', '9 days'),
 ('2024-04-05', 'Vênus Vista', 'BR98765432', 'TRX00002', '2024-04-12', '9 days'),
 ('2024-05-01', 'Lunar Landing', 'US13579246', 'TRX00003', '2024-05-08', '10 days'),
 ('2024-06-10', 'Io Adventure', 'CA24681012', 'TRX00004', '2024-06-17', '11 days'),
@@ -65,8 +81,17 @@ INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duraca
 ('2025-02-15', 'Neptune Nirvana', 'ES80246802', 'TRX00012', '2025-02-22', '19 days'),
 ('2025-03-10', 'Enceladus Expedition', 'NG91357913', 'TRX00013', '2025-03-17', '20 days'),
 ('2025-04-05', 'Olympus Outing', 'ZA02468024', 'TRX00014', '2025-04-12', '21 days'),
-('2025-05-01', 'Phobos Fantasy', 'AU13579135', 'TRX00015', '2025-05-08', '22 days');
+('2025-05-01', 'Phobos Fantasy', 'AU13579135', 'TRX00015', '2025-05-08', '22 days'),
+('2024-04-05', 'Vênus Vista', 'XP12345678', 'TRX00016', '2024-04-12', '9 days'),
+('2024-06-10', 'Io Adventure', 'XP12345678', 'TRX00018', '2024-06-17', '11 days'),
+('2024-03-15', 'Marte Escape', 'BR98765432', 'TRX00019', '2024-03-22', '8 days'),
+('2024-06-10', 'Io Adventure', 'BR98765432', 'TRX00020', '2024-06-17', '11 days'),
+('2024-08-15', 'Europa Excursion', 'BR98765432', 'TRX00021', '2024-08-22', '13 days'),
+('2024-03-15', 'Marte Escape', 'US13579246', 'TRX00017', '2024-03-22', '8 days'),
+('2025-02-15', 'Neptune Nirvana', 'US13579246', 'TRX00023', '2025-02-22', '19 days'),
+('2025-05-01', 'Phobos Fantasy', 'US13579246', 'TRX00024', '2025-05-08', '22 days');
 
+--Tabela avaliacao
 INSERT INTO avaliacao (dataPartida, pacote, turista, nota, comentario, dataHora) VALUES
 ('2024-03-15', 'Marte Escape', 'XP12345678', 9.5, 'Ótima viagem!', '2024-03-23 10:30:00'),
 ('2024-04-05', 'Vênus Vista', 'BR98765432', 8.0, 'Lugar incrível!', '2024-04-13 15:20:00'),
@@ -84,7 +109,7 @@ INSERT INTO avaliacao (dataPartida, pacote, turista, nota, comentario, dataHora)
 ('2025-04-05', 'Olympus Outing', 'ZA02468024', 6.5, 'Poderia ser melhor.', '2025-04-13 16:45:00'),
 ('2025-05-01', 'Phobos Fantasy', 'AU13579135', 9.5, 'Experiência incrível!', '2025-05-09 11:20:00');
 
-
+--Tabela guiaEspacial
 INSERT INTO guiaEspacial (passaporte, nome, celular, telFixo, cep, numEndereco, pais, dataNascimento) VALUES
 ('GU12345678', 'Astronauta Silva', '11987654321', '11223344', '12345-678', 101, 'Brasil', '1980-05-12'),
 ('GU98765432', 'Cosmonauta Ivanov', '21987654321', '22334455', '23456-789', 202, 'Rússia', '1975-08-28'),
@@ -97,6 +122,7 @@ INSERT INTO guiaEspacial (passaporte, nome, celular, telFixo, cep, numEndereco, 
 ('GU57913579', 'Space Ivanov', NULL, '66789012', '90123-456', 109, 'Rússia', '1989-06-18'),
 ('GU68024680', 'Cosmic Zhao', '81987654321', '77890123', '01234-567', 210, 'China', '1974-10-01');
 
+--Tabela especialidades
 INSERT INTO especialidades (guiaEspacial, especialidade) VALUES
 ('GU12345678', 'Astronomia'),
 ('GU12345678', 'Geologia'),
@@ -116,6 +142,7 @@ INSERT INTO especialidades (guiaEspacial, especialidade) VALUES
 ('GU57913579', 'Engenharia de Foguetes'),
 ('GU68024680', 'Engenharia de Foguetes');
 
+--Tabela guiaPacote
 INSERT INTO guiaPacote (guia, pacote) VALUES
 ('GU12345678', 'Marte Escape'),
 ('GU12345678', 'Europa Excursion'),
@@ -134,6 +161,7 @@ INSERT INTO guiaPacote (guia, pacote) VALUES
 ('GU57913579', 'Olympus Outing'),
 ('GU68024680', 'Pluto Pilgrimage');
 
+--Tabela linguasGuia
 INSERT INTO linguasGuia (guia, lingua) VALUES
 ('GU12345678', 'Português'),
 ('GU12345678', 'Inglês'),
@@ -150,19 +178,23 @@ INSERT INTO linguasGuia (guia, lingua) VALUES
 ('GU57913579', 'Russo'),
 ('GU68024680', 'Chinês');
 
+--Tabela corpoCeleste
 INSERT INTO corpoCeleste (nome, tipo, gravidade, numColonias) VALUES
-('Júpiter', 'SATÉLITE', 24.79, 3654),
+('Júpiter', 'PLANETA', 24.79, 3654),
 ('Terra', 'PLANETA', 9.8, 195),
 ('Lua', 'SATÉLITE', 1.625, 18),
 ('Marte', 'PLANETA', 3.72076, 95),
 ('Fobos', 'SATÉLITE', 0.0057, 72),
 ('Ganimedes', 'SATÉLITE', 1.428, 36),
+('Mercúrio', 'PLANETA', 5.6, 22),
 ('Europa', 'SATÉLITE', 1.314, 10),
 ('Titã', 'SATÉLITE', 1.352, 15),
 ('Vênus', 'PLANETA', 8.87, 20),
 ('Encélado', 'SATÉLITE', 0.113, 6),
-('Ganímedes', 'SATÉLITE', 1.428, 10);
+('Io', 'SATÉLITE', 0.8, 6),
+('Saturno', 'PLANETA', 10.44, 32);
 
+--Tabela colonia
 INSERT INTO colonia (nome, habitantes, localização, corpoCeleste) VALUES
 ('ColoniaTerra', 1000000, 'América do Norte', 'Terra'),
 ('ColoniaLua', 233, 'Cratera Lunar', 'Lua'),
@@ -173,70 +205,82 @@ INSERT INTO colonia (nome, habitantes, localização, corpoCeleste) VALUES
 ('ColoniaTitan', 852, 'Planalto de Xanadu', 'Titã'),
 ('ColoniaVenus', 633, 'Planalto Aphrodite', 'Vênus'),
 ('ColoniaEncelado', 90, 'Subsuperfície de Encélado', 'Encélado'),
-('ColoniaGanymede', 8000, 'Base Galileu', 'Ganímedes');
+('ColoniaMercurio', 8000, 'Cratera Funda', 'Mercúrio'),
+('ColoniaIo', 300, 'Cratera de Galileu', 'Io');
 
+--Tabela voo
 INSERT INTO voo (numero, pacote, colonia, origem, destino, horario, duracao, qtdPassageiro, cabineNum, cabineTipo) VALUES
-(1, 'Marte Escape', 'ColoniaTerra', 'Terra', 'Marte', '12:00:00', '7 days', 100, 101, 'LUXO'),
-(2, 'Vênus Vista', 'ColoniaVenus', 'Vênus', 'Marte', '08:30:00', '7 days', 150, 102, 'STANDARD'),
-(3, 'Lunar Landing', 'ColoniaLua', 'Lua', 'Terra', '18:20:00', '7 days', 80, 103, 'DELUXE'),
-(4, 'Io Adventure', 'ColoniaMarte', 'Marte', 'Io', '14:30:00', '7 days', 120, 104, 'LUXO'),
-(5, 'Titan Trek', 'ColoniaTitan', 'Titã', 'Terra', '17:35:00', '7 days', 200, 105, 'STANDARD'),
-(6, 'Europa Excursion', 'ColoniaEuropa', 'Europa', 'Terra', '14:00:00', '7 days', 90, 106, 'DELUXE'),
-(7, 'Ganymede Getaway', 'ColoniaGanymede', 'Ganimedes', 'Terra', '10:55:00', '7 days', 130, 107, 'LUXO'),
-(8, 'Mercury Mission', 'ColoniaMarte', 'Mercúrio', 'Terra', '09:20:00', '7 days', 70, 109, 'DELUXE'),
-(9, 'Pluto Pilgrimage', 'ColoniaMarte', 'Plutão', 'Terra', '13:40:00', '7 days', 160, 110, 'LUXO'),
-(10, 'Sunrise on Saturn', 'ColoniaTerra', 'Saturno', 'Terra', '09:50:00', '7 days', 110, 111, 'STANDARD'),
-(11, 'Neptune Nirvana', 'ColoniaTerra', 'Netuno', 'Terra', '14:25:00', '7 days', 140, 112, 'DELUXE'),
-(12, 'Enceladus Expedition', 'ColoniaEncelado', 'Encélado', 'Terra', '16:40:00', '7 days', 190, 113, 'LUXO'),
-(13, 'Olympus Outing', 'ColoniaMarte', 'Marte', 'Terra', '11:25:00', '7 days', 100, 114, 'STANDARD'),
-(14, 'Phobos Fantasy', 'ColoniaMarte', 'Fobos', 'Terra', '10:15:00', '7 days', 150, 115, 'DELUXE');
+(1, 'Marte Escape', 'ColoniaMarte', 'Terra', 'Marte', '12:00:00', '7 days', 100, 101, 'LUXO'),
+ (2, 'Marte Escape', 'ColoniaMarte', 'Marte', 'Terra', '12:00:00', '7 days', 100, 101, 'LUXO'),
+(3, 'Vênus Vista', 'ColoniaVenus', 'Terra', 'Vênus', '08:30:00', '7 days', 150, 102, 'STANDARD'),
+ (4, 'Vênus Vista', 'ColoniaVenus', 'Vênus', 'Terra', '08:30:00', '7 days', 150, 102, 'STANDARD'),
+(5, 'Lunar Landing', 'ColoniaLua', 'Terra', 'Lua', '18:20:00', '7 days', 80, 103, 'DELUXE'),
+ (6, 'Lunar Landing', 'ColoniaLua', 'Lua', 'Terra', '18:20:00', '7 days', 80, 103, 'DELUXE'),
+(7, 'Io Adventure', 'ColoniaIo', 'Terra', 'Io', '14:30:00', '7 days', 120, 104, 'LUXO'),
+ (8, 'Io Adventure', 'ColoniaIo', 'Io', 'Terra', '14:30:00', '7 days', 120, 104, 'LUXO'),
+(9, 'Titan Trek', 'ColoniaTitan', 'Terra', 'Titã', '17:35:00', '7 days', 200, 105, 'STANDARD'),
+ (10, 'Titan Trek', 'ColoniaTitan', 'Titã', 'Terra', '17:35:00', '7 days', 200, 105, 'STANDARD'),
+(11, 'Europa Excursion', 'ColoniaEuropa', 'Terra', 'Europa', '14:00:00', '7 days', 90, 106, 'DELUXE'),
+ (12, 'Europa Excursion', 'ColoniaEuropa', 'Europa', 'Terra', '14:00:00', '7 days', 90, 106, 'DELUXE'),
+(13, 'Ganymede Getaway', 'ColoniaGanimedes', 'Terra', 'Ganimedes', '10:55:00', '7 days', 130, 107, 'LUXO'),
+ (14, 'Ganymede Getaway', 'ColoniaGanimedes', 'Ganimedes', 'Terra', '10:55:00', '7 days', 130, 107, 'LUXO'),
+(15, 'Mercury Mission', 'ColoniaMercurio', 'Terra', 'Mercúrio', '09:20:00', '7 days', 70, 109, 'DELUXE'),
+ (16, 'Mercury Mission', 'ColoniaMercurio', 'Mercúrio', 'Terra', '09:20:00', '7 days', 70, 109, 'DELUXE'),
+(17, 'Enceladus Expedition', 'ColoniaEncelado', 'Terra', 'Encéladu', '16:40:00', '7 days', 190, 113, 'LUXO'),
+ (18, 'Enceladus Expedition', 'ColoniaEncelado', 'Encélado', 'Terra', '16:40:00', '7 days', 190, 113, 'LUXO'),
+(19, 'Phobos Fantasy', 'ColoniaFobos', 'Terra', 'Fobus', '10:15:00', '7 days', 150, 115, 'DELUXE'),
+ (20, 'Phobos Fantasy', 'ColoniaFobos', 'Fobos', 'Terra', '10:15:00', '7 days', 150, 115, 'DELUXE');
 
--- Inserções na tabela experiencia
+--tabela experiencia
 INSERT INTO experiencia (nome, tipo, horario, localizacao, restricao, colonia, interativo) VALUES
 ('Observação de Estrelas', 'TURÍSTICA', '21:00:00', 'Área de Observação Celeste', 'Nenhuma', 'ColoniaTerra', TRUE),
 ('Lab de Biologia Marciana', 'CIENTÍFICA', '10:00:00', 'Laboratório de Pesquisa', 'Traje Espacial', 'ColoniaMarte', FALSE),
 ('Passeio nas Dunas de Titã', 'TURÍSTICA', '15:30:00', 'Planalto de Xanadu', 'Nenhuma', 'ColoniaTitan', TRUE),
 ('Estudo da Geologia Lunar', 'CIENTÍFICA', '13:45:00', 'Cratera Lunar', 'Traje Espacial', 'ColoniaLua', FALSE),
 ('Expedição Subsuperfície', 'TURÍSTICA', '12:00:00', 'Subsuperfície de Europa', 'Nenhuma', 'ColoniaEuropa', TRUE),
-('Biologia Aquática', 'CIENTÍFICA', '09:30:00', 'Base Galileu', 'Traje Espacial', 'ColoniaGanymede', FALSE);
+('Biologia Aquática', 'CIENTÍFICA', '09:30:00', 'Base Galileu', 'Traje Espacial', 'ColoniaGanimedes', FALSE);
 
+--Tabela equipamentos
 INSERT INTO equipamentos (experiencia, equipamento) VALUES
 ('Observação de Estrelas', 'Telescópio'),
-('Lab de Biologia Marciana', 'Microscópio'),
-('Lab de Biologia Marciana', 'Tubos de Ensaio'),
 ('Passeio nas Dunas de Titã', 'Veículo de Exploração'),
 ('Estudo da Geologia Lunar', 'Martelo Geológico'),
 ('Expedição Subsuperfície', 'Equipamento de Perfuração'),
-('Biologia Aquática', 'Máscara de Mergulho');
+('Biologia Aquática', 'Máscara de Mergulho'),
+('Lab de Biologia Marciana', 'Telescópio'),
+('Lab de Biologia Marciana', 'Veículo de Exploração'),
+('Lab de Biologia Marciana', 'Martelo Geológico'),
+('Lab de Biologia Marciana', 'Equipamento de Perfuração'),
+('Lab de Biologia Marciana', 'Máscara de Mergulho');
 
--- Inserções na tabela pacoteExperiencias
+--Tabela pacoteExperiencias
 INSERT INTO pacoteExperiencias (pacote, experiencia) VALUES
 ('Marte Escape', 'Observação de Estrelas'),
 ('Marte Escape', 'Lab de Biologia Marciana'),
-('Vênus Vista', 'Passeio nas Dunas de Titã'),
 ('Lunar Landing', 'Estudo da Geologia Lunar'),
 ('Io Adventure', 'Expedição Subsuperfície'),
 ('Titan Trek', 'Biologia Aquática'),
 ('Europa Excursion', 'Observação de Estrelas'),
-('Ganymede Getaway', 'Passeio nas Dunas de Titã'),
-('Callisto Cabin', 'Lab de Biologia Marciana'),
 ('Mercury Mission', 'Biologia Aquática'),
-('Pluto Pilgrimage', 'Estudo da Geologia Lunar'),
 ('Sunrise on Saturn', 'Biologia Aquática'),
-('Neptune Nirvana', 'Expedição Subsuperfície'),
-('Enceladus Expedition', 'Estudo da Geologia Lunar'),
-('Olympus Outing', 'Lab de Biologia Marciana'),
-('Phobos Fantasy', 'Observação de Estrelas');
+('Enceladus Expedition', 'Estudo da Geologia Lunar');
 
+
+--Tabela Planeta
 INSERT INTO planeta (nome, numSatelites) VALUES
 ('Júpiter', 79),
 ('Terra', 1),
 ('Marte', 2),
-('Vênus', 1);
+('Vênus', 1),
+('Mercúrio', 0),
+('Saturno', 145);
 
+--Tabela Satelite
 INSERT INTO satelite (nome, planeta, distancia) VALUES
 ('Lua', 'Terra', 384400),
 ('Fobos', 'Marte', 9377),
-('Ganimedes', 'Júpiter', 1070400),
 ('Europa', 'Júpiter', 671034),
-('Ganímedes', 'Júpiter', 1070400);
+('Ganimedes', 'Júpiter', 1070400),
+('Io', 'Júpiter', 628300000),
+('Titã', 'Saturno', 1200000),
+('Encélado', 'Saturno', 1272000);
