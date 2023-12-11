@@ -122,7 +122,7 @@ CREATE TABLE colonia(
 	corpoCeleste VARCHAR(30) NOT NULL,
 	
 	CONSTRAINT pk_colonia PRIMARY KEY (nome),
-	CONSTRAINT fk_colonia FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome) ON DELETE CASCADE
+	CONSTRAINT fk_colonia FOREIGN KEY (corpoCeleste) REFERENCES corpoCeleste(nome) ON DELETE RESTRICT 
 );
 
 CREATE TABLE voo(
