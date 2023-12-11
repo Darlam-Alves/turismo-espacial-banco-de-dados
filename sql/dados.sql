@@ -1,3 +1,4 @@
+--Tabela turistaespacial
 INSERT INTO turistaEspacial (passaporte, nome, celular, telFixo, cep, numEndereço, pais, dataNascimento) VALUES
 ('XP12345678', 'Luna Moraes', '11987654321', '21234567', '12345-678', 101, 'Brasil', '1985-07-16'),
 ('BR98765432', 'Marco Silva', '21987654321', '11234567', '23456-789', 202, 'Brasil', '1990-03-25'),
@@ -15,6 +16,7 @@ INSERT INTO turistaEspacial (passaporte, nome, celular, telFixo, cep, numEndere�
 ('ZA02468024', 'Ethan Smith', '27987654321', NULL, '45678-901', 214, 'África do Sul', '1991-10-18'),
 ('AU13579135', 'Olivia Brown', '91987654321', '33456789', '56789-012', 315, 'Austrália', '1989-03-03');
 
+--Tabela pagamento
 INSERT INTO pagamento (numTransacao, dataPagamento, metodo, valor, estado) VALUES
 ('TRX00001', '2023-01-05', 'Crédito', 500, 'Pago'),
 ('TRX00002', '2023-01-12', 'Débito', 200, 'Não Pago'),
@@ -43,6 +45,7 @@ INSERT INTO pagamento (numTransacao, dataPagamento, metodo, valor, estado) VALUE
 ('TRX00025', '2023-04-20', 'Débito', 355, 'Pago'),
 ('TRX00026', '2023-04-20', 'Crédito', 435, 'Pago');
 
+--Tabela pacote
 INSERT INTO Pacote (nome, nomeHospedagem, horaCheckIn, horaCheckOut, endereco) VALUES
 ('Marte Escape', 'HospedagemMarte1', '12:00:00', '12:00:00', 'Valles Marineris, Marte'),
 ('Vênus Vista', 'HospedagemVenus1', '08:30:00', '15:45:00', 'Maxwell Montes, Vênus'),
@@ -60,8 +63,7 @@ INSERT INTO Pacote (nome, nomeHospedagem, horaCheckIn, horaCheckOut, endereco) V
 ('Olympus Outing', 'HospedagemMarte2', '11:25:00', '15:50:00', 'Olympus Mons, Marte'),
 ('Phobos Fantasy', 'HospedagemPhobos1', '10:15:00', '14:45:00', 'Stickney Crater, Fobos');
 
-
-
+--Tabela viagem
 INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duracao) VALUES
 ('2024-03-15', 'Marte Escape', 'XP12345678', 'TRX00001', '2024-03-22', '8 days'),
 ('2024-03-25', 'Vênus Vista', 'XP12345678', 'TRX00022', '2024-04-22', '28 days'),
@@ -89,7 +91,7 @@ INSERT INTO viagem (dataPartida, pacote, turista, pagamento, dataRetorno, duraca
 ('2025-02-15', 'Neptune Nirvana', 'US13579246', 'TRX00023', '2025-02-22', '19 days'),
 ('2025-05-01', 'Phobos Fantasy', 'US13579246', 'TRX00024', '2025-05-08', '22 days');
 
-
+--Tabela avaliacao
 INSERT INTO avaliacao (dataPartida, pacote, turista, nota, comentario, dataHora) VALUES
 ('2024-03-15', 'Marte Escape', 'XP12345678', 9.5, 'Ótima viagem!', '2024-03-23 10:30:00'),
 ('2024-04-05', 'Vênus Vista', 'BR98765432', 8.0, 'Lugar incrível!', '2024-04-13 15:20:00'),
@@ -107,7 +109,7 @@ INSERT INTO avaliacao (dataPartida, pacote, turista, nota, comentario, dataHora)
 ('2025-04-05', 'Olympus Outing', 'ZA02468024', 6.5, 'Poderia ser melhor.', '2025-04-13 16:45:00'),
 ('2025-05-01', 'Phobos Fantasy', 'AU13579135', 9.5, 'Experiência incrível!', '2025-05-09 11:20:00');
 
-
+--Tabela guiaEspacial
 INSERT INTO guiaEspacial (passaporte, nome, celular, telFixo, cep, numEndereco, pais, dataNascimento) VALUES
 ('GU12345678', 'Astronauta Silva', '11987654321', '11223344', '12345-678', 101, 'Brasil', '1980-05-12'),
 ('GU98765432', 'Cosmonauta Ivanov', '21987654321', '22334455', '23456-789', 202, 'Rússia', '1975-08-28'),
@@ -120,6 +122,7 @@ INSERT INTO guiaEspacial (passaporte, nome, celular, telFixo, cep, numEndereco, 
 ('GU57913579', 'Space Ivanov', NULL, '66789012', '90123-456', 109, 'Rússia', '1989-06-18'),
 ('GU68024680', 'Cosmic Zhao', '81987654321', '77890123', '01234-567', 210, 'China', '1974-10-01');
 
+--Tabela especialidades
 INSERT INTO especialidades (guiaEspacial, especialidade) VALUES
 ('GU12345678', 'Astronomia'),
 ('GU12345678', 'Geologia'),
@@ -139,6 +142,7 @@ INSERT INTO especialidades (guiaEspacial, especialidade) VALUES
 ('GU57913579', 'Engenharia de Foguetes'),
 ('GU68024680', 'Engenharia de Foguetes');
 
+--Tabela guiaPacote
 INSERT INTO guiaPacote (guia, pacote) VALUES
 ('GU12345678', 'Marte Escape'),
 ('GU12345678', 'Europa Excursion'),
@@ -157,6 +161,7 @@ INSERT INTO guiaPacote (guia, pacote) VALUES
 ('GU57913579', 'Olympus Outing'),
 ('GU68024680', 'Pluto Pilgrimage');
 
+--Tabela linguasGuia
 INSERT INTO linguasGuia (guia, lingua) VALUES
 ('GU12345678', 'Português'),
 ('GU12345678', 'Inglês'),
@@ -173,6 +178,7 @@ INSERT INTO linguasGuia (guia, lingua) VALUES
 ('GU57913579', 'Russo'),
 ('GU68024680', 'Chinês');
 
+--Tabela corpoCeleste
 INSERT INTO corpoCeleste (nome, tipo, gravidade, numColonias) VALUES
 ('Júpiter', 'PLANETA', 24.79, 3654),
 ('Terra', 'PLANETA', 9.8, 195),
@@ -188,7 +194,7 @@ INSERT INTO corpoCeleste (nome, tipo, gravidade, numColonias) VALUES
 ('Io', 'SATÉLITE', 0.8, 6),
 ('Saturno', 'PLANETA', 10.44, 32);
 
-
+--Tabela colonia
 INSERT INTO colonia (nome, habitantes, localização, corpoCeleste) VALUES
 ('ColoniaTerra', 1000000, 'América do Norte', 'Terra'),
 ('ColoniaLua', 233, 'Cratera Lunar', 'Lua'),
@@ -202,6 +208,7 @@ INSERT INTO colonia (nome, habitantes, localização, corpoCeleste) VALUES
 ('ColoniaMercurio', 8000, 'Cratera Funda', 'Mercúrio'),
 ('ColoniaIo', 300, 'Cratera de Galileu', 'Io');
 
+--Tabela voo
 INSERT INTO voo (numero, pacote, colonia, origem, destino, horario, duracao, qtdPassageiro, cabineNum, cabineTipo) VALUES
 (1, 'Marte Escape', 'ColoniaMarte', 'Terra', 'Marte', '12:00:00', '7 days', 100, 101, 'LUXO'),
  (2, 'Marte Escape', 'ColoniaMarte', 'Marte', 'Terra', '12:00:00', '7 days', 100, 101, 'LUXO'),
@@ -224,7 +231,7 @@ INSERT INTO voo (numero, pacote, colonia, origem, destino, horario, duracao, qtd
 (19, 'Phobos Fantasy', 'ColoniaFobos', 'Terra', 'Fobus', '10:15:00', '7 days', 150, 115, 'DELUXE'),
  (20, 'Phobos Fantasy', 'ColoniaFobos', 'Fobos', 'Terra', '10:15:00', '7 days', 150, 115, 'DELUXE');
 
--- Inserções na tabela experiencia
+--tabela experiencia
 INSERT INTO experiencia (nome, tipo, horario, localizacao, restricao, colonia, interativo) VALUES
 ('Observação de Estrelas', 'TURÍSTICA', '21:00:00', 'Área de Observação Celeste', 'Nenhuma', 'ColoniaTerra', TRUE),
 ('Lab de Biologia Marciana', 'CIENTÍFICA', '10:00:00', 'Laboratório de Pesquisa', 'Traje Espacial', 'ColoniaMarte', FALSE),
@@ -233,20 +240,20 @@ INSERT INTO experiencia (nome, tipo, horario, localizacao, restricao, colonia, i
 ('Expedição Subsuperfície', 'TURÍSTICA', '12:00:00', 'Subsuperfície de Europa', 'Nenhuma', 'ColoniaEuropa', TRUE),
 ('Biologia Aquática', 'CIENTÍFICA', '09:30:00', 'Base Galileu', 'Traje Espacial', 'ColoniaGanimedes', FALSE);
 
+--Tabela equipamentos
 INSERT INTO equipamentos (experiencia, equipamento) VALUES
 ('Observação de Estrelas', 'Telescópio'),
 ('Passeio nas Dunas de Titã', 'Veículo de Exploração'),
 ('Estudo da Geologia Lunar', 'Martelo Geológico'),
 ('Expedição Subsuperfície', 'Equipamento de Perfuração'),
 ('Biologia Aquática', 'Máscara de Mergulho'),
-
 ('Lab de Biologia Marciana', 'Telescópio'),
 ('Lab de Biologia Marciana', 'Veículo de Exploração'),
 ('Lab de Biologia Marciana', 'Martelo Geológico'),
 ('Lab de Biologia Marciana', 'Equipamento de Perfuração'),
 ('Lab de Biologia Marciana', 'Máscara de Mergulho');
 
--- Inserções na tabela pacoteExperiencias
+--Tabela pacoteExperiencias
 INSERT INTO pacoteExperiencias (pacote, experiencia) VALUES
 ('Marte Escape', 'Observação de Estrelas'),
 ('Marte Escape', 'Lab de Biologia Marciana'),
@@ -265,6 +272,7 @@ INSERT INTO pacoteExperiencias (pacote, experiencia) VALUES
 ('Olympus Outing', 'Lab de Biologia Marciana'),
 ('Phobos Fantasy', 'Observação de Estrelas');
 
+--Tabela Planeta
 INSERT INTO planeta (nome, numSatelites) VALUES
 ('Júpiter', 79),
 ('Terra', 1),
@@ -273,6 +281,7 @@ INSERT INTO planeta (nome, numSatelites) VALUES
 ('Mercúrio', 0),
 ('Saturno', 145);
 
+--Tabela Satelite
 INSERT INTO satelite (nome, planeta, distancia) VALUES
 ('Lua', 'Terra', 384400),
 ('Fobos', 'Marte', 9377),
