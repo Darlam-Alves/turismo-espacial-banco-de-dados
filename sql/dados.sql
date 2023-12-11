@@ -257,19 +257,14 @@ INSERT INTO equipamentos (experiencia, equipamento) VALUES
 INSERT INTO pacoteExperiencias (pacote, experiencia) VALUES
 ('Marte Escape', 'Observação de Estrelas'),
 ('Marte Escape', 'Lab de Biologia Marciana'),
-('Vênus Vista', 'Passeio nas Dunas de Titã'),
 ('Lunar Landing', 'Estudo da Geologia Lunar'),
 ('Io Adventure', 'Expedição Subsuperfície'),
 ('Titan Trek', 'Biologia Aquática'),
 ('Europa Excursion', 'Observação de Estrelas'),
-('Ganymede Getaway', 'Passeio nas Dunas de Titã'),
-('Callisto Cabin', 'Lab de Biologia Marciana'),
 ('Mercury Mission', 'Biologia Aquática'),
-('Pluto Pilgrimage', 'Estudo da Geologia Lunar'),
 ('Sunrise on Saturn', 'Biologia Aquática'),
 ('Neptune Nirvana', 'Expedição Subsuperfície'),
 ('Enceladus Expedition', 'Estudo da Geologia Lunar'),
-('Olympus Outing', 'Lab de Biologia Marciana'),
 ('Phobos Fantasy', 'Observação de Estrelas');
 
 --Tabela Planeta
