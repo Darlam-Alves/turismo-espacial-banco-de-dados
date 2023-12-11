@@ -28,6 +28,7 @@ CREATE TABLE pagamento (
 
 CREATE TABLE Pacote(
     nome VARCHAR(30) NOT NULL,
+    nomeHospedagem VARCHAR(30),
     horaCheckIn TIME, 
     horaCheckOut TIME, 
     endereco VARCHAR(30) NOT NULL,
