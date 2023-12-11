@@ -235,12 +235,16 @@ INSERT INTO experiencia (nome, tipo, horario, localizacao, restricao, colonia, i
 
 INSERT INTO equipamentos (experiencia, equipamento) VALUES
 ('Observação de Estrelas', 'Telescópio'),
-('Lab de Biologia Marciana', 'Microscópio'),
-('Lab de Biologia Marciana', 'Tubos de Ensaio'),
 ('Passeio nas Dunas de Titã', 'Veículo de Exploração'),
 ('Estudo da Geologia Lunar', 'Martelo Geológico'),
 ('Expedição Subsuperfície', 'Equipamento de Perfuração'),
-('Biologia Aquática', 'Máscara de Mergulho');
+('Biologia Aquática', 'Máscara de Mergulho'),
+
+('Lab de Biologia Marciana', 'Telescópio'),
+('Lab de Biologia Marciana', 'Veículo de Exploração'),
+('Lab de Biologia Marciana', 'Martelo Geológico'),
+('Lab de Biologia Marciana', 'Equipamento de Perfuração'),
+('Lab de Biologia Marciana', 'Máscara de Mergulho');
 
 -- Inserções na tabela pacoteExperiencias
 INSERT INTO pacoteExperiencias (pacote, experiencia) VALUES
