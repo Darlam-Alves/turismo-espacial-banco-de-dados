@@ -19,6 +19,8 @@ def inserir_Colonia(Nome, Habitantes, Localizacao, Corpoceleste):
 
     except Exception as e:
         print("Erro ao inserir colônia:", e)
+    except IntegrityError as ie:
+        print(f"Erro de integridade: {ie}")
 
     finally:
         cursor.close()
@@ -58,6 +60,22 @@ def inserir_turista(passaporte, nome, celular, telefone, cep, numEndereco, pais,
         cursor.close()
         conn.close()
 
+def inserir_avaliacao(data_partida, pacote, turista, nota, comentario, dataHora):
+   try:
+        conn, cursor = conectar_banco()
+        query = "INSERT INTO avaliacao (dataPartida, pacote , turista, nota, comentario, dataHora) VALUES (%s, %s, %s, %s, %s, %s)"
+        values = (data_partida, pacote, turista, nota, comentario, dataHora)
+        cursor.execute(query, values)
+        conn.commit()
+        print("Avaliacao inserida com sucesso")
+
+    except Exception as e:
+        print("Erro ao inserir avaliacao:", e)
+
+    finally:
+        cursor.close()
+        conn.close()
+
 
 def consultar_dividas():
     try:
@@ -83,7 +101,6 @@ def consultar_dividas():
         cursor.close()
         conn.close()
 
-
 def consultar_experiencias_colonia():
     try:
         conn, cursor = conectar_banco()
@@ -107,3 +124,4 @@ def consultar_experiencias_colonia():
     finally:
         cursor.close()
         conn.close()
+

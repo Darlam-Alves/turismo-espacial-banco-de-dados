@@ -1,9 +1,9 @@
 import psycopg2
 from config import get_db_config
+from datetime import datetime
 import functions
 
 db_config = get_db_config()
-
 conn = psycopg2.connect(**db_config)
 cursor = conn.cursor()
 
@@ -37,6 +37,16 @@ def inserir_turista():
 
     functions.inserir_turista(passaporte, nome, celular, telefone, cep, numEndereco, pais, dataNascimento)
     conn.commit()
+
+def avaliar_viagem():
+    data_partida = input('informe a data de partida: ')
+    pacote = input('Informe o pacote selecionado: ')
+    turista = input('Informe o seu passaporte: ')
+    nota = int (input('de uma nota de 0 a 10 pra viagem: '))
+    comentario = input('insira o seu comentario sobre a viagem: ')
+    dataHora = datetime.now()
+
+    functions.inserir_avaliacao(data_partida, pacote, turista, nota, comentario, dataHora)
 
 
 operacao = -1
